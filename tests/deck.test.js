@@ -23,7 +23,11 @@ describe('useDeck first deck', () => {
     expect(deck).toHaveLength(104)
   })
 
-  it.todo('can have top card removed')
+  test('can have top card removed', () => {
+    const { deck, pop } = useDeck()
+    pop()
+    expect(deck).toHaveLength(103)
+  })
 });
 
 describe('useDeck second deck', () => {
@@ -32,5 +36,12 @@ describe('useDeck second deck', () => {
     expect(deck).toHaveLength(0)
   })
 
-  it.todo('can have a card added')
+  test('can have a card added', () => {
+    const { deck, add } = useDeck(false)
+    const newDeck = add({
+      number: 1,
+      suit: 'diamond',
+    })
+    expect(newDeck).toHaveLength(1)
+  })
 });

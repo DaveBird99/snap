@@ -8,6 +8,13 @@ export interface Card {
     suit: Suit
 }
 
+interface PopType {
+    (): Card | undefined
+}
+interface AddType {
+    (card: Card): void
+}
+
 const shuffle = (array: Card[]) => {
     let currentIndex = array.length,  randomIndex;
     
@@ -45,7 +52,25 @@ const defaultDeck = (fill:Boolean = true) => {
 }
 
 export const useDeck = (fill:Boolean = true) => {
-    const [deck, setDeck] = useState<Card[]>(defaultDeck(fill))
+    const [deck, setDeck] = useState(defaultDeck(fill))
 
-    return {deck, setDeck}
+    const pop: PopType = () => {
+        if (!deck || deck.length == 0) return undefined
+        const newDeck = deck
+        const topCard = newDeck.shift()
+        if (newDeck) setDeck(newDeck)
+        return topCard
+    }
+
+    const add: AddType = (card: Card) => {
+        if (!deck) {
+            setDeck([card])
+            return
+        }
+        const newDeck = [card, ...deck]
+        setDeck(newDeck)
+        return newDeck
+    }
+
+    return {deck, setDeck, pop, add}
 }
