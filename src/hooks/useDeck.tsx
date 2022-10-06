@@ -72,5 +72,5 @@ export const useDeck = (fill:Boolean = true) => {
         return newDeck
     }
 
-    return {deck, setDeck, pop, add}
+    return {deck, topCard: deck.length ? deck[0] : undefined, setDeck, pop, add}
 }
