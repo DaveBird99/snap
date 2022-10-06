@@ -25,8 +25,9 @@ describe('useDeck first deck', () => {
 
   test('can have top card removed', () => {
     const { deck, pop } = useDeck()
-    pop()
-    expect(deck).toHaveLength(51)
+    const expectedTopCard = deck[0]
+    const topCard = pop()
+    expect(topCard).toEqual(expectedTopCard)
   })
 });
 

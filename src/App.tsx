@@ -58,9 +58,12 @@ function App() {
     return 'Draw'
   }
 
+  const speedUp = () => setInterval(interval/2)
+
   return (
     <div>
       <h1>Snap</h1>
+      <p><button onClick={speedUp}>Speed Up</button></p>
       <p>{player1.playerName}: {player1.score}</p>
       <p>{player2.playerName}: {player2.score}</p>
       <p>Deck1 top card:{cardDiv(deck1.topCard)}</p>
