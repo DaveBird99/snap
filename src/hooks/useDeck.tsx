@@ -44,7 +44,6 @@ const defaultDeck = (fill:Boolean = true) => {
             }
             newDeck.push(newCard)
         }))
-        newDeck = [...newDeck, ...newDeck]
         newDeck = shuffle(newDeck)
         return newDeck
     }
@@ -56,7 +55,7 @@ export const useDeck = (fill:Boolean = true) => {
 
     const pop: PopType = () => {
         if (!deck || deck.length == 0) return undefined
-        const newDeck = deck
+        const newDeck = [...deck]
         const topCard = newDeck.shift()
         if (newDeck) setDeck(newDeck)
         return topCard

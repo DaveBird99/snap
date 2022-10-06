@@ -20,13 +20,13 @@ const setState = jest.fn();
 describe('useDeck first deck', () => {
   test('fills with 104 cards', () => {
     const { deck } = useDeck()
-    expect(deck).toHaveLength(104)
+    expect(deck).toHaveLength(52)
   })
 
   test('can have top card removed', () => {
     const { deck, pop } = useDeck()
     pop()
-    expect(deck).toHaveLength(103)
+    expect(deck).toHaveLength(51)
   })
 });
 
